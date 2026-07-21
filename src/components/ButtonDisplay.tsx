@@ -1,6 +1,6 @@
 
 
-function ButtonDisplay(value: string) {
+function ButtonDisplay({value}: {value: string}) {
   return (
     <div>{value}</div>
   )

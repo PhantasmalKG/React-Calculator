@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import CalculatorDisplay from './components/CalculatorDisplay'
+import ButtonDisplay from './components/ButtonDisplay'
 
 
 function App() {
   const [displayValue, setDisplayValue] = useState('0');
+  const [currentValue, setCurrentValue] = useState(0);
+  const [previousValue, setPreviousValue] = useState(0);
+  const [operatoration, setOperatoration] = useState(null);
   const [result, setResult] = useState(0);
   
   const handleButtonClick = (value: string) => {
@@ -44,9 +48,9 @@ function App() {
     <div className="react-calulator-container">
       <div className="react-calculator">
         <CalculatorDisplay />
-        <div className="btns">
+        
 
-        </div>
+        
       </div>
     </div>
      

@@ -1,8 +1,15 @@
 
+type ButtonDisplayProps = {
+  value: string;
+  onClick: (value: any) => any;
+};
 
-function ButtonDisplay({value}: {value: string}) {
+
+function ButtonDisplay({value, onClick}: ButtonDisplayProps) {
   return (
-    <div>{value}</div>
+    <button onClick={() => onClick(value)}>
+      {value}
+    </button>
   )
 }
 

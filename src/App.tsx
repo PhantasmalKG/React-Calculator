@@ -10,29 +10,33 @@ function App() {
   const [operatoration, setOperatoration] = useState(null);
   const [result, setResult] = useState(0);
   
-  const handleButtonClick = (value: string) => {
-    if (value === 'C') {
-      setDisplayValue('0');
 
-    } else if (value === 'AC') {
-      setDisplayValue('0');
-      setResult(0);
+  function handleButtonClick(value: string) {
+    setDisplayValue(value);
+  }
+  // const handleButtonClick = (value: string) => {
+  //   if (value === 'C') {
+  //     setDisplayValue('0');
 
-    } else if (value === '=') {
-      try {
-        const evalResult = eval(displayValue);
-        setDisplayValue(evalResult.toString());
-        setResult(evalResult);
+  //   } else if (value === 'AC') {
+  //     setDisplayValue('0');
+  //     setResult(0);
 
-      } catch (error) {
-        setDisplayValue('Error');
+  //   } else if (value === '=') {
+  //     try {
+  //       const evalResult = eval(displayValue);
+  //       setDisplayValue(evalResult.toString());
+  //       setResult(evalResult);
 
-      }
-    } else {
-      setDisplayValue((prev) => (prev === '0' ? value : prev + value));
+  //     } catch (error) {
+  //       setDisplayValue('Error');
+
+  //     }
+  //   } else {
+  //     setDisplayValue((prev) => (prev === '0' ? value : prev + value));
       
-    }
-  };
+  //   }
+  // };
 
 
   const btns =[
@@ -47,8 +51,8 @@ function App() {
     <>
     <div className="react-calulator-container">
       <div className="react-calculator">
-        <CalculatorDisplay />
-        
+        <CalculatorDisplay  value={displayValue}/>
+        <ButtonDisplay value={"7"} onClick={handleButtonClick}/>
 
         
       </div>

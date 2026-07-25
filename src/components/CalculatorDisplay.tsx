@@ -1,7 +1,11 @@
 
- function CalculatorDisplay() {
+type CalculatorDisplayProps = {
+  value: number | string;
+};
+
+function CalculatorDisplay({value}: CalculatorDisplayProps) {
   return (
-    <div>0</div>
+    <div>{value}</div>
   )
 }
 

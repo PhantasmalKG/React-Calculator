@@ -1,7 +1,7 @@
 
 type ButtonDisplayProps = {
   value: string;
-  onClick: (value: any) => any;
+  onClick: (value: string) => void;
 };
 
 

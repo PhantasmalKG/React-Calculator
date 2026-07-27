@@ -4,15 +4,40 @@ import ButtonDisplay from './ButtonDisplay'
 
 
 function Calculator() {
-  const [displayValue, setDisplayValue] = useState<string>('0');
-  const [currentValue, setCurrentValue] = useState<number>(0);
+  const [displayValue, setDisplayValue] = useState<string>("0");
+  const [firstOperand, setFirstOperand] = useState<number | null>(null);
   const [previousValue, setPreviousValue] = useState<number>(0);
-  const [operatoration, setOperatoration] = useState<string | null>(null);
+  const [operation, setOperation] = useState<string | null>(null);
+  const [secondOperandFlag, setSecondOperandFlag] = useState<boolean>(false);
   const [result, setResult] = useState<number>(0);
   
 
-  function handleButtonClick(value: string) {
-    setDisplayValue(value);
+  function handleButtonClick(value: string): void {
+    
+    if (value === "C"){
+        setDisplayValue("0");
+        return;
+    }
+    
+    if (displayValue === "0"){
+        setDisplayValue(value);
+    } else{
+        setDisplayValue(displayValue + value);
+    }
+  }
+
+  function numericButtonClick(numValue: string): void {
+    if (secondOperandFlag) {
+      setDisplayValue(numValue);
+      setSecondOperandFlag(false);
+      return;
+    }
+
+    if (displayValue === "0") {
+      setDisplayValue(numValue);
+    } else {
+      setDisplayValue(displayValue + numValue);
+    }
   }
   // const handleButtonClick = (value: string) => {
   //   if (value === 'C') {
@@ -40,11 +65,11 @@ function Calculator() {
 
 
   const btns =[
-      '%', 
-    '7', '8', '9', 'C', 'AC',
-    '4', '5', '6', '*', '/',
-    '1', '2', '3', '+', '-',
-    '0', '.', '+/-', '='
+    "AC", "C", "%", "÷",
+    "7", "8", "9", "×",
+    "4", "5", "6", "-",
+    "1", "2", "3", "+",
+    "0", ".", "=", "+/-"
   ]
 
   return (
@@ -57,7 +82,7 @@ function Calculator() {
             <ButtonDisplay key={btn} value={btn} onClick={handleButtonClick}/>
             ))}
         </div>
-        <ButtonDisplay value={"7"} onClick={handleButtonClick}/>
+        
 
         
       </div>

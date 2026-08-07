@@ -5,7 +5,7 @@ type CalculatorDisplayProps = {
 
 function CalculatorDisplay({value}: CalculatorDisplayProps) {
   return (
-    <div>{value}</div>
+    <div className="calculator-display">{value}</div>
   )
 }
 

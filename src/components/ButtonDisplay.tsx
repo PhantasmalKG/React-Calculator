@@ -7,7 +7,7 @@ type ButtonDisplayProps = {
 
 function ButtonDisplay({value, onClick}: ButtonDisplayProps) {
   return (
-    <button onClick={() => onClick(value)}>
+    <button className="calculator-button" onClick={() => onClick(value)}>
       {value}
     </button>
   )

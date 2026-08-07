@@ -1,19 +1,36 @@
 import { useState } from 'react'
 import CalculatorDisplay from './CalculatorDisplay'
 import ButtonDisplay from './ButtonDisplay'
+import "../index.css"
 
 
 function Calculator() {
-  const [displayValue, setDisplayValue] = useState<string>("0");
-  const [firstOperand, setFirstOperand] = useState<number | null>(null);
-  const [previousValue, setPreviousValue] = useState<number>(0);
-  const [operation, setOperation] = useState<string | null>(null);
-  const [secondOperandFlag, setSecondOperandFlag] = useState<boolean>(false);
-  const [result, setResult] = useState<number>(0);
+  const [displayValue, setDisplayValue] = useState<string>("0"); // State to hold the current value displayed on the calculator
+  const [firstOperand, setFirstOperand] = useState<number | null>(null); // State to hold the first operand for calculations
+  const [previousValue, setPreviousValue] = useState<number>(0); // State to hold the previous value for calculations
+  const [operation, setOperation] = useState<string | null>(null); // State to hold the current operation (+, -, *, ÷)
+  const [secondOperandFlag, setSecondOperandFlag] = useState<boolean>(false); // State to indicate if the next input is the second operand
+  const [result, setResult] = useState<number>(0); // State to hold the result of the calculation
   
 
   function handleButtonClick(value: string): void {
     
+    switch(value){
+        case "C":
+            setDisplayValue("0");
+            setFirstOperand(null);
+            setOperation(null);
+            setSecondOperandFlag(false);
+            return;
+        
+            case "+":
+            case "-":
+            case "*":
+            case "÷":
+                
+    }
+
+
     if (value === "C"){
         setDisplayValue("0");
         return;
@@ -37,6 +54,14 @@ function Calculator() {
       setDisplayValue(numValue);
     } else {
       setDisplayValue(displayValue + numValue);
+    }
+  }
+
+  function handleOperation(op: string): void {
+    if (firstOperand === null) {
+      setFirstOperand(parseFloat(displayValue));
+      setOperation(op);
+      setSecondOperandFlag(true);
     }
   }
   // const handleButtonClick = (value: string) => {
